@@ -1,7 +1,5 @@
 package net.pixit.oooze.dye;
 
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -18,14 +16,11 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.pixit.oooze.Oooze;
 
@@ -70,26 +65,13 @@ public class DyeBall extends ThrownItemEntity {
         }
     }
 
-    protected void onBlockHit(BlockHitResult blockHitResult) {
+    /*protected void onBlockHit(BlockHitResult blockHitResult) {
         // change color of block if valid block to change color
         super.onBlockHit(blockHitResult);
         BlockPos pos = blockHitResult.getBlockPos();
         BlockState bs = this.getWorld().getBlockState(pos);
 
         
-    }
-
-    /*private void addToWorld(BlockPos pos, Block block, BlockState previousState) {
-        if (previousState.contains(Properties.BED_PART)) {
-            Direction facing = BedBlock.getOppositePartDirection(previousState);
-            BlockPos otherEndPos = pos.offset(facing);
-
-            this.world.setBlockState(pos, block.getStateWithProperties(previousState), Block.FORCE_STATE | Block.REDRAW_ON_MAIN_THREAD | Block.NOTIFY_ALL);
-            this.world.setBlockState(otherEndPos, block.getStateWithProperties(this.world.getBlockState(otherEndPos)), Block.FORCE_STATE | Block.REDRAW_ON_MAIN_THREAD | Block.NOTIFY_ALL);
-
-        } else {
-            this.world.setBlockState(pos, block.getStateWithProperties(previousState));
-        }
     }*/
 
     protected void onCollision(HitResult hitResult) {
@@ -103,23 +85,4 @@ public class DyeBall extends ThrownItemEntity {
     public DyeColor getColor() {
         return ((DyeItem) this.getItem().getItem()).getColor();
     }
-
-    /*private String fromColoredBlock(String blockId) {
-        for (DyeColor color : DyeColor.values()) {
-            if (blockId.startsWith(color.getName()) || blockId.endsWith(color.getName())) {
-                return blockId.replace(color.getName(), this.getColor().getName());
-            }
-        }
-        return null;
-    }*/
-
-    /*private String fromPlainBlock(String blockId) {
-        return this.getColor() + "_" + blockId;
-    }*/
-
-    /*private String generateId(String blockId) {
-        String id = this.fromColoredBlock(blockId);
-        id = id == null ? this.fromPlainBlock(blockId) : id;
-        return id;
-    }*/
 }
