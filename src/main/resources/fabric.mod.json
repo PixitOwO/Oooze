@@ -21,6 +21,9 @@
 		],
 		"fabric-datagen": [
 			"net.pixit.oooze.OoozeDataGenerator"
+		],
+		"goop": [
+			"net.pixit.oooze.goop.GoopRegistry"
 		]
 	},
 	"mixins": [
